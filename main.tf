@@ -25,14 +25,14 @@ resource "terraform_data" "main" {
   }
 
   provisioner "file" {
-    source      = "boostrap.sh" # Local file path
-    destination = "/tmp/boostrap.sh"    # Destination path on the remote machine
+    source      = "bootstrap.sh" # Local file path
+    destination = "/tmp/bootstrap.sh"    # Destination path on the remote machine
   }
 
   provisioner "remote-exec" {
     inline = [
-        "chmod +x /tmp/boostrap.sh",
-        "sudo sh /tmp/boostrap.sh ${var.component} ${var.environment} ${var.app_version}"
+        "chmod +x /tmp/bootstrap.sh",
+        "sudo sh /tmp/bootstrap.sh ${var.component} ${var.environment} ${var.app_version}"
     ]
   }
 }
